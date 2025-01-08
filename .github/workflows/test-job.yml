@@ -45,7 +45,7 @@ jobs:
           python -m pip install --upgrade tox
 
       - name: Test with Tox at Ubuntu
-        if: inputs.os == 'ubuntu-latest'
+        if: startsWith(inputs.os, 'ubuntu-')
         run: |
           catchsegv xvfb-run -a -s "$XVFBARGS" tox -e ${{ inputs.tox_env }}
         env:
@@ -64,7 +64,7 @@ jobs:
           QTWEBENGINE_CHROMIUM_FLAGS: "--disable-gpu --no-sandbox"
 
       - name: Test with Tox at other systems
-        if: inputs.os != 'ubuntu-latest'
+        if: ${{ ! startsWith(inputs.os, 'ubuntu-') }}
         run: tox -e ${{ inputs.tox_env }}
         env:
           # Set pyqt and webengine versions.
@@ -82,7 +82,7 @@ jobs:
       - name: Upload code coverage
         if: |
           inputs.python-version == '3.10' &&
-          inputs.os == 'ubuntu-latest' &&
+          startsWith(inputs.os, 'ubuntu-') &&
           inputs.tox_env == 'orange-released'
         run: |
           pip install codecov
