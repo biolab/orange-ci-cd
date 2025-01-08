@@ -32,12 +32,17 @@ jobs:
         with:
           python-version: ${{ inputs.python-version }}
 
-      - name: Install linux system dependencies
-        # PyQt6 need special system dependencies on Ubuntu
-        if: runner.os == 'Linux'
+      - name: Install Ubuntu-22.04 system dependencies
+        if: inputs.os == 'ubuntu-22.04'
         run: |
           sudo apt-get update
           sudo apt-get install -y libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 libegl1-mesa libxcb-shape0 libxcb-cursor0 glibc-tools
+
+      - name: Install Ubuntu-24.04 system dependencies
+        if: inputs.os == 'ubuntu-24.04' || inputs.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 libegl-mesa0 libxcb-shape0 libxcb-cursor0 glibc-tools
 
       - name: Install dependencies
         run: |
