@@ -30,18 +30,19 @@ jobs:
             pyqt: '5.15.*'
             experimental: false
 
+          # when Orange3 supports 3.13, increase the following versions
           - os: windows-latest
-            python-version: '3.13'
+            python-version: '3.12'
             tox_env: orange-latest
             pyqt: '5.15.*'
             experimental: false
           - os: macOS-latest
-            python-version: '3.13'
+            python-version: '3.12'
             tox_env: orange-latest
             pyqt: '5.15.*'
             experimental: false
           - os: ubuntu-24.04
-            python-version: '3.13'
+            python-version: '3.12'
             tox_env: orange-latest
             pyqt: '5.15.*'
             experimental: false
