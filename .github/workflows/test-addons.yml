@@ -9,42 +9,34 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, macOS-latest, windows-latest]
-        python-version: ['3.11', '3.12']
+        python-version: ['3.11', '3.12', '3.13', '3.14']
         tox_env: [orange-released]
         pyqt: ['5.15.*', '6.7.*']
         experimental: [false]
         include:
           - os: windows-latest
-            python-version: '3.10'
+            python-version: '3.11'
             tox_env: orange-oldest
-            pyqt: '5.15.*'
             experimental: false
           - os: macOS-latest
-            python-version: '3.10'
+            python-version: '3.11'
             tox_env: orange-oldest
-            pyqt: '5.15.*'
             experimental: false
           - os: ubuntu-22.04
-            python-version: '3.10'
+            python-version: '3.11'
             tox_env: orange-oldest
-            pyqt: '5.15.*'
             experimental: false
-
-          # when Orange3 supports 3.13, increase the following versions
           - os: windows-latest
-            python-version: '3.12'
+            python-version: '3.13'
             tox_env: orange-latest
-            pyqt: '5.15.*'
             experimental: false
           - os: macOS-latest
-            python-version: '3.12'
+            python-version: '3.13'
             tox_env: orange-latest
-            pyqt: '5.15.*'
             experimental: false
           - os: ubuntu-24.04
-            python-version: '3.12'
+            python-version: '3.13'
             tox_env: orange-latest
-            pyqt: '5.15.*'
             experimental: false
     uses: ./.github/workflows/test-job.yml
     with:
