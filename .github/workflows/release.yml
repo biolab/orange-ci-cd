@@ -51,10 +51,9 @@ jobs:
     outputs:
       include: ${{ steps.set-matrix.outputs.include }}
     env:
-      # remove 3.12 constraint when Orange builds wheels for Python 3.12
-      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9,<3.12"
+      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.11"
       # support musllinux when Orange supports it
-      CIBW_SKIP: "pp* *-musllinux_*"  
+      CIBW_SKIP: "pp* *-musllinux_*"
       CIBW_ARCHS_LINUX: "x86_64 aarch64"
       CIBW_ARCHS_MACOS: "x86_64 arm64"
       CIBW_ARCHS_WINDOWS: AMD64
