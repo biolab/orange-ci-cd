@@ -9,9 +9,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, macOS-latest, windows-latest]
-        python-version: ['3.11', '3.12', '3.13', '3.14']
+        python-version: ['3.12', '3.13']
         tox_env: [orange-released]
-        pyqt: ['5.15.*', '6.8.*']
+        pyqt: ['6.8.*']
         experimental: [false]
         include:
           - os: windows-latest
@@ -43,6 +43,11 @@ jobs:
             python-version: '3.14'
             tox_env: orange-latest
             pyqt: '6.8.*'
+            experimental: false
+          - os: ubuntu-24.04
+            python-version: '3.14'
+            tox_env: orange-latest
+            pyqt: '5.15.*'
             experimental: false
     uses: ./.github/workflows/test-job.yml
     with:
