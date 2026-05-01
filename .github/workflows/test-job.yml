@@ -32,6 +32,10 @@ jobs:
         with:
           python-version: ${{ inputs.python-version }}
 
+      - name: Install VC++ runtime (Windows only)
+        if: runner.os == 'Windows'
+        run: choco install vcredist140 -y
+
       - name: Install Ubuntu-22.04 system dependencies
         if: inputs.os == 'ubuntu-22.04'
         run: |
